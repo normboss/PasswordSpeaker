@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <style>
+        #main-id {
+            width: 200px;
+            height: 200px;
+            border: 3px solid red;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var index = 0;
+        var topList = [];
+        topList[0] = "a";
+        topList[1] = "capital B";
+        topList[2] = "dollar sign";
+        topList[3] = "1";
+    </script>
+
+    <main>
+        <br><br>
+        <div id="main-id" class="main-div">
+
+        </div>
+        <br><br>
+        <button onclick="next()">Next</button>
+    </main>
+
+    <script>
+        if (annyang) {
+            // Let's define a command.
+            var commands = {
+                'hello': function () { alert('Hello world!'); }
+            };
+
+
+            // Add our commands to annyang
+            annyang.addCommands(commands);
+
+            // Start listening.
+            annyang.start();
+        }
+        function next() {
+            var id = document.getElementById("main-id");
+            var s = topList[index];
+            index++;
+            if (index >= topList.length) {
+                index = 0;
+            }
+            id.innerHTML = s;
+            speak(s);
+        }
+
+        function speak(str) {
+            var msg = new SpeechSynthesisUtterance();
+            // msg.voice = 50;
+            msg.rate = 0.3;
+            msg.pitch = 1;
+            msg.text = str;
+            speechSynthesis.speak(msg);
+        }
+
+    </script>
+
+</body>
+
+</html>
