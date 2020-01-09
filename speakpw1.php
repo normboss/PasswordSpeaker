@@ -57,6 +57,7 @@
         var pwString = "";
         var rate = .5;
         var continuous_flag = false;
+        var contVar;
     </script>
     <main id="main-id" class="">
         <br><br>
@@ -74,7 +75,7 @@
         <button class="next-button" onclick="back()">Previous</button>
         <button class="next-button" onclick="next()">Next</button>
         <button class="next-button" onclick="skip()">Skip</button>
-        <button class="next-button" onclick="continuous()">Continuous</button>
+        <button class="next-button" onclick="contVar = setInterval(next, 2000)">Continuous</button>
         <!-- <button class="next-button" onclick="slower()">Slower</button>
         <button class="next-button" onclick="faster()">Faster</button> -->
         <br><br>
@@ -212,13 +213,11 @@
         }
 
         function continuous() {
-            // for (i = index; i < speakList.length; i++) {
-            const len = speakList.length;
-            while ( index < len ) {
-                // document.getElementById("pw-div").innerHTML = updatePWstring(pwList[index]);
-                speechSynthesis.addEventListener('end', continuous2());
-                speak(speakList[index]);
-            }
+            // const len = speakList.length;
+            // while ( index < len ) {
+            //     speechSynthesis.addEventListener('end', continuous2());
+            //     speak(speakList[index]);
+            // }
         }
 
         function continuous1() {
@@ -244,7 +243,8 @@
             var s = "";
             var c = "";
             if (index >= speakList.length) {
-                s = "Password Complete";
+                clearInterval(contVar);
+                pwString = s = "Password Complete";
                 index = 0;
             } else {
                 s = speakList[index];
