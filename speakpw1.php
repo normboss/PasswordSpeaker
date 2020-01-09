@@ -74,7 +74,7 @@
         <br><br>
         <button class="next-button" onclick="back()">Previous</button>
         <button class="next-button" onclick="next()">Next</button>
-        <button class="next-button" onclick="skip()">Skip</button>
+        <!-- <button class="next-button" onclick="skip()">Skip</button> -->
         <button class="next-button" onclick="contVar = setInterval(next, 2000)">Continuous</button>
         <!-- <button class="next-button" onclick="slower()">Slower</button>
         <button class="next-button" onclick="faster()">Faster</button> -->
